@@ -13,7 +13,7 @@ app.use(cors());
 
 app.use('/posts', postRoutes);
 app.use("/user", userRouter);
-//const path = require('path');
+import path from 'path';
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/build')))
   app.get('/*', (req, res) => {
