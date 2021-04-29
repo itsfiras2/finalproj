@@ -13,7 +13,13 @@ app.use(cors());
 
 app.use('/posts', postRoutes);
 app.use("/user", userRouter);
-
+const path = require('path');
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../client/build')))
+  app.get('/*', (req, res) => {
+      res.sendFile(path.join(__dirname, '../client/build', 'index.html'))
+  })
+}
 const CONNECTION_URL = 'mongodb+srv://firasdb:firas123456789@cluster0.3hplv.mongodb.net/firasdb?retryWrites=true&w=majority';
 const PORT = process.env.PORT || 5000;
 
