@@ -1,12 +1,11 @@
-
 import axios from 'axios';
-const API = axios.create({ baseURL: 'http://localhost:5000' });
+const API = axios.create({ baseURL: 'https://my-final-app-on-go-my-code.herokuapp.com/' });
 API.interceptors.request.use((req) => {
-  if (localStorage.getItem('profile')) {
-    req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem('profile')).token}`;
-  }
+    if (localStorage.getItem('profile')) {
+        req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem('profile')).token}`;
+    }
 
-  return req;
+    return req;
 });
 
 export const fetchPosts = () => API.get('/posts');
