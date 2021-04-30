@@ -15,11 +15,10 @@ app.use('/posts', postRoutes);
 app.use("/user", userRouter);
 
 import * as path from "path";
-const __dirname = path.resolve(path.dirname(''));
 if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, '../client/build')))
+    app.use(express.static(path.join('app', '../client/build')))
     app.get('/*', (req, res) => {
-        res.sendFile(path.join(__dirname, '../client/build', 'index.html'))
+        res.sendFile(path.join('app', '../client/build', 'index.html'))
     })
 }
 const CONNECTION_URL = 'mongodb+srv://firasdb:firas123456789@cluster0.3hplv.mongodb.net/firasdb?retryWrites=true&w=majority';
