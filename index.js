@@ -14,12 +14,13 @@ app.use(cors());
 app.use('/posts', postRoutes);
 app.use("/user", userRouter);
 import path from 'path';
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(path.dirname, '../client/build')))
+
+//if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(path.dirname(import.meta.url) + '../client/build')))
   app.get('/*', (req, res) => {
-      res.sendFile(path.join(path.dirname, '../client/build', 'index.html'))
+      res.sendFile(path.join(path.dirname(import.meta.url) +'../client/build', 'index.html'))
   })
-}
+//}
 const CONNECTION_URL = 'mongodb+srv://firasdb:firas123456789@cluster0.3hplv.mongodb.net/firasdb?retryWrites=true&w=majority';
 const PORT = process.env.PORT || 5000;
 
