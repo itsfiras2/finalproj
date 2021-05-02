@@ -1,5 +1,5 @@
 import axios from 'axios';
-const API = axios.create({ baseURL: 'https://my-final-app-on-go-my-code.herokuapp.com/' });
+const API = axios.create({ baseURL: 'http://localhost:5000' });
 API.interceptors.request.use((req) => {
     if (localStorage.getItem('profile')) {
         req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem('profile')).token}`;
@@ -16,3 +16,4 @@ export const deletePost = (id) => API.delete(`/posts/${id}`);
 
 export const signIn = (formData) => API.post('/user/signin', formData);
 export const signUp = (formData) => API.post('/user/signup', formData);
+export const updateUser = (id, updatedUser) => API.patch(`/user/${id}`, updatedUser);

@@ -21,7 +21,7 @@ if (process.env.NODE_ENV === 'production') {
         res.sendFile(path.join('app', '../client/build', 'index.html'))
     })
 }
-const CONNECTION_URL = 'mongodb+srv://firasdb:firas123456789@cluster0.3hplv.mongodb.net/firasdb?retryWrites=true&w=majority';
+const CONNECTION_URL = 'mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&ssl=false';
 const PORT = process.env.PORT || 5000;
 
 mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
