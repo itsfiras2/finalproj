@@ -1,4 +1,4 @@
-import { AUTH, UPDATE } from '../constants/actionTypes';
+import { AUTH, UPDATEPROFILE } from '../constants/actionTypes';
 import * as api from '../api/index.js';
 
 export const signin = (formData, router) => async(dispatch) => {
@@ -30,7 +30,7 @@ export const updateUser = (id, user) => async(dispatch) => {
     try {
         const { data } = await api.updateUser(id, user);
 
-        dispatch({ type: UPDATE, payload: data });
+        dispatch({ type: UPDATEPROFILE, payload: data });
     } catch (error) {
         console.log(error)
     }

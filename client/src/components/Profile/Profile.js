@@ -14,11 +14,7 @@ import UserPosts from './UserPosts'
 
 const Profile = ({ setCurrentId }) => {
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
-    const dispatch = useDispatch();
-    const location = useLocation();
-    const history = useHistory();
     const classes = useStyles();
-    const posts = useSelector((state) => state.posts);
     return (
         <div>
                 <Grow in>
@@ -43,7 +39,7 @@ const Profile = ({ setCurrentId }) => {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
+        <Button onClick={() => setUser(user)} size="small" color="primary">
           update profile
         </Button>
       </CardActions>
@@ -51,7 +47,7 @@ const Profile = ({ setCurrentId }) => {
 
           </Grid>
           <Grid item xs={12} sm={4}>
-            <Form />
+            <Form user={user.result} setUser={setUser}/>
           </Grid>
           <Typography variant="h1" component="h2" gutterBottom>
        My Posts:

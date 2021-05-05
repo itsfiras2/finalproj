@@ -53,8 +53,9 @@ export const updatedUser = async(req, res) => {
     console.log(id)
 
     if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No user with id: ${id}`);
+    const hashedPassword = await bcrypt.hash(password, 12);
 
-    const updatedUser = { name, email, password, selectedFile, _id: id };
+    const updatedUser = { name, email, password: hashedPassword, selectedFile, _id: id };
 
     await UserModal.findByIdAndUpdate(id, updatedUser, { new: true });
 
