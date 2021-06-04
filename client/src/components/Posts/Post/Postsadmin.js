@@ -5,7 +5,6 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import ThumbUpAltOutlined from '@material-ui/icons/ThumbUpAltOutlined';
 import { useDispatch } from 'react-redux';
 import moment from 'moment';
-
 import { likePost, deletePost } from '../../../actions/posts';
 import useStyles from './styles';
 
@@ -59,6 +58,8 @@ const Post = ({ post, setCurrentId }) => {
 
       </CardActions>
     </Card>
+
+
   );
 };
 

@@ -5,7 +5,7 @@ export default makeStyles((theme) => ({
   appBar: {
     borderRadius: 2 ,
 
-    margin: '30px 0',
+    margin: '15px 0',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -17,14 +17,13 @@ export default makeStyles((theme) => ({
   heading: 
   {
   "color":"#a3f7bf ",
-  "marginLeft":"0px",
+  "marginLeft":"-15px",
   "position":"relative",
   "top":"-2px",
   textDecoration: 'none',
-  "fontSize":"40px"},
+  "fontSize":"38px"},
   image: {
-    marginLeft: '25px',
-    marginRight: '25px',
+    marginLeft: '10px',
   },
   toolbar: {
     display: 'flex',
@@ -39,6 +38,10 @@ export default makeStyles((theme) => ({
   userName: {
     display: 'flex',
     alignItems: 'center',
+    textDecoration: 'none',
+    "marginRight":"15px",
+
+
   },
   brandContainer: {
     display: 'flex',

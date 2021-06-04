@@ -26,7 +26,7 @@ export const signin = async(req, res) => {
 };
 
 export const signup = async(req, res) => {
-    const { email, password, firstName, lastName } = req.body;
+    const { email, password, imgUser , firstName , lastName ,Phone } = req.body;
 
     try {
         const oldUser = await UserModal.findOne({ email });
@@ -35,7 +35,7 @@ export const signup = async(req, res) => {
 
         const hashedPassword = await bcrypt.hash(password, 12);
 
-        const result = await UserModal.create({ email, password: hashedPassword, name: `${firstName} ${lastName}` });
+        const result = await UserModal.create({ email, password: hashedPassword, Phone , imgUser ,  name: `${firstName} ${lastName}` });
 
         const token = jwt.sign({ email: result.email, id: result._id }, secret, { expiresIn: "1h" });
 
@@ -49,13 +49,12 @@ export const signup = async(req, res) => {
 
 export const updatedUser = async(req, res) => {
     const { id } = req.params;
-    const { name, email, password, selectedFile, } = req.body;
-    console.log(id)
+    const { name, email, password, Phone , imgUser } = req.body;
 
     if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No user with id: ${id}`);
     const hashedPassword = await bcrypt.hash(password, 12);
 
-    const updatedUser = { name, email, password: hashedPassword, selectedFile, _id: id };
+    const updatedUser = { name, email, password: hashedPassword, Phone , imgUser , _id: id };
 
     await UserModal.findByIdAndUpdate(id, updatedUser, { new: true });
 
